@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Search Results</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f7f9fc;
+    }
+
+    .search-container {
+      max-width: 1200px;
+      margin-top: 100px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 400px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      flex-shrink: 0;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+    }
+
+    .filter-group {
+      margin-bottom: 20px;
+    }
+
+    .filter-group label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .results {
+      flex: 1;
+    }
+
+    .flight-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .flight-info {
+      display: flex;
+      align-items: center;
+      flex: 1 1 60%;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .flight-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .flight-details {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .flight-time {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .flight-route {
+      color: #666;
+    }
+
+    .airline-name {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .price-section {
+      text-align: right;
+      flex: 1 1 30%;
+    }
+
+    .price-section p {
+      font-size: 20px;
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    .book-btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .book-btn:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      .search-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .flight-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .flight-info, .price-section {
+        flex: 1 1 100%;
+        justify-content: center;
+      }
+
+      .price-section {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+<header id="header">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="#">
+          <img src="images/logo.png" alt="iqvia Logo">
+        </a>
+      </div>
+  
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./flight.html">Flights</a></li>
+          <!-- <li><a href="#">Tours</a></li> -->
+          <li><a href="./hotel.html">Hotels</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+        </ul>
+        <!-- <button class="login-btn" id="loginBtn">Login</button> -->
+        <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div class="search-container">
+    <div class="sidebar">
+      <h3>Filters</h3>
+<br />
+      <div class="filter-group">
+        <strong>Stops</strong>
+        <label><input type="checkbox" class="stop-filter" value="non-stop" checked /> Non-stop</label>
+        <label><input type="checkbox" class="stop-filter" value="1-stop" /> 1 Stop</label>
+        <label><input type="checkbox" class="stop-filter" value="2+" /> 2+ Stops</label>
+      </div>
+
+      <div class="filter-group">
+        <strong>Airlines</strong>
+        <label><input type="checkbox" class="airline-filter" value="IndiGo" checked /> IndiGo</label>
+        <label><input type="checkbox" class="airline-filter" value="Air India" checked/> Air India</label>
+        <label><input type="checkbox" class="airline-filter" value="SpiceJet" checked/> SpiceJet</label>
+      </div>
+
+      <div class="filter-group">
+        <strong>Price Range</strong>
+        <input type="range" id="priceRange" min="2000" max="10000" value="7000" />
+        <p id="priceLabel">Up to ₹7,000</p>
+      </div>
+    </div>
+
+    <div class="results">
+      <h2>Available Flights</h2>
+
+      <div class="flight-card" data-airline="IndiGo" data-price="4299">
+        <div class="flight-info">
+          <img src="https://airhex.com/images/airline-logos/indigo.png" alt="IndiGo Logo" class="flight-logo" />
+          <div class="flight-details">
+            <div class="airline-name">IndiGo</div>
+            <div class="flight-time">06:00 → 08:30</div>
+            <div class="flight-route">Chennai (MAA) → Delhi (DEL)</div>
+          </div>
+        </div>
+        <div class="price-section">
+          <p>₹4,299</p>
+          <button class="book-btn">Book Now</button>
+        </div>
+      </div>
+
+      <div class="flight-card" data-airline="Air India" data-price="5150">
+        <div class="flight-info">
+          <img src="https://airhex.com/images/airline-logos/air-india.png" alt="Air India Logo" class="flight-logo" />
+          <div class="flight-details">
+            <div class="airline-name">Air India</div>
+            <div class="flight-time">07:15 → 10:05</div>
+            <div class="flight-route">Chennai → Mumbai</div>
+          </div>
+        </div>
+        <div class="price-section">
+          <p>₹5,150</p>
+          <button class="book-btn">Book Now</button>
+        </div>
+      </div>
+
+      <div class="flight-card" data-airline="SpiceJet" data-price="4899">
+        <div class="flight-info">
+          <img src="https://airhex.com/images/airline-logos/indiaone-air.png" alt="SpiceJet Logo" class="flight-logo" />
+          <div class="flight-details">
+            <div class="airline-name">SpiceJet</div>
+            <div class="flight-time">09:00 → 11:45</div>
+            <div class="flight-route">Delhi → Bangalore</div>
+          </div>
+        </div>
+        <div class="price-section">
+          <p>₹4,899</p>
+          <button class="book-btn">Book Now</button>
+        </div>
+      </div>
+
+      <div class="flight-card" data-airline="IndiGo" data-price="4299">
+        <div class="flight-info">
+          <img src="https://airhex.com/images/airline-logos/indigo.png" alt="IndiGo Logo" class="flight-logo" />
+          <div class="flight-details">
+            <div class="airline-name">IndiGo</div>
+            <div class="flight-time">06:00 → 08:30</div>
+            <div class="flight-route">Chennai (MAA) → Delhi (DEL)</div>
+          </div>
+        </div>
+        <div class="price-section">
+          <p>₹4,299</p>
+          <button class="book-btn">Book Now</button>
+        </div>
+      </div>
+
+      <div class="flight-card" data-airline="Air India" data-price="5150">
+        <div class="flight-info">
+          <img src="https://airhex.com/images/airline-logos/air-india.png" alt="Air India Logo" class="flight-logo" />
+          <div class="flight-details">
+            <div class="airline-name">Air India</div>
+            <div class="flight-time">07:15 → 10:05</div>
+            <div class="flight-route">Chennai → Mumbai</div>
+          </div>
+        </div>
+        <div class="price-section">
+          <p>₹5,150</p>
+          <button class="book-btn">Book Now</button>
+        </div>
+      </div>
+
+      <div class="flight-card" data-airline="SpiceJet" data-price="4899">
+        <div class="flight-info">
+          <img src="https://airhex.com/images/airline-logos/indiaone-air.png" alt="SpiceJet Logo" class="flight-logo" />
+          <div class="flight-details">
+            <div class="airline-name">SpiceJet</div>
+            <div class="flight-time">09:00 → 11:45</div>
+            <div class="flight-route">Delhi → Bangalore</div>
+          </div>
+        </div>
+        <div class="price-section">
+          <p>₹4,899</p>
+          <button class="book-btn">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Logo">
+        <p>Your trusted partner in global travel experiences.</p>
+      </div>
+  
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="./flight.html">Flights</a></li>
+          <li><a href="./hotel.html">Hotels</a></li>
+          <!-- <li><a href="#tours">Tours</a></li> -->
+          <li><a href="./about-us.html">About Us</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-help">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Booking Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Email: support@travelvialondon.com</p>
+        <p>Phone: +44 123 456 7890</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© 2025 TravelViaLondon. All rights reserved.</p>
+    </div>
+  </footer>
+  
+
+<!-- Scroll to Top Button -->
+<button id="topBtn"><i class="fas fa-chevron-up"></i></button>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="assets/js/scripts.js"></script>
+
+  <script>
+    const priceRange = document.getElementById("priceRange");
+    const priceLabel = document.getElementById("priceLabel");
+    const airlineFilters = document.querySelectorAll(".airline-filter");
+    const flightCards = document.querySelectorAll(".flight-card");
+
+    function applyFilters() {
+      const selectedAirlines = Array.from(airlineFilters)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+
+      const maxPrice = parseInt(priceRange.value);
+
+      flightCards.forEach(card => {
+        const airline = card.dataset.airline;
+        const price = parseInt(card.dataset.price);
+
+        const matchAirline = selectedAirlines.includes(airline);
+        const matchPrice = price <= maxPrice;
+
+        card.style.display = (matchAirline && matchPrice) ? "flex" : "none";
+      });
+    }
+
+    airlineFilters.forEach(cb => cb.addEventListener("change", applyFilters));
+    priceRange.addEventListener("input", () => {
+      priceLabel.textContent = `Up to ₹${priceRange.value}`;
+      applyFilters();
+    });
+
+    applyFilters();
+  </script>
+</body>
+</html>

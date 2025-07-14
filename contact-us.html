@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - TravelViaLondon</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #f5e2d0, #fff);
+        }
+
+        .contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            gap: 70px;
+        }
+        .contact-form {
+            animation: slideInLeft 1s ease-in-out;
+        }
+        .contact-info {
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .contact-form,
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form h2,
+        .contact-info h2 {
+            color: #061242;
+            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            background-color: #f2841d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #cc6504;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            color: #f2841d;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .map {
+            margin-top: 30px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+
+        footer {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+<header id="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="#">
+          <img src="images/logo.png" alt="iqvia Logo">
+        </a>
+      </div>
+  
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./flight.html">Flights</a></li>
+          <!-- <li><a href="#">Tours</a></li> -->
+          <li><a href="./hotel.html">Hotels</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+        </ul>
+        <!-- <button class="login-btn" id="loginBtn">Login</button> -->
+        <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+    <section class="contact-section">
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="text" placeholder="Subject">
+                <textarea rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> 123 Travel St, London, UK</li>
+                <li><i class="fas fa-envelope"></i> support@travelvialondon.com</li>
+                <li><i class="fas fa-phone"></i> +44 123 456 7890</li>
+                <li><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</li>
+            </ul>
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317716.60645421536!2d-0.4312441619948037!3d51.52860701284128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sin!4v1752495345624!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Logo">
+        <p>Your trusted partner in global travel experiences.</p>
+      </div>
+  
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="./flight.html">Flights</a></li>
+          <li><a href="./hotel.html">Hotels</a></li>
+          <!-- <li><a href="#tours">Tours</a></li> -->
+          <li><a href="./about-us.html">About Us</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-help">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Booking Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Email: support@travelvialondon.com</p>
+        <p>Phone: +44 123 456 7890</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© 2025 TravelViaLondon. All rights reserved.</p>
+    </div>
+  </footer>
+  
+
+<!-- Scroll to Top Button -->
+<button id="topBtn"><i class="fas fa-chevron-up"></i></button>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="assets/js/scripts.js"></script>
+</body>
+
+</html>

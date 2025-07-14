@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Travel and Tourism">
+  <meta name="author" content="Dude_Shamz">
+  <title>Hotel</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+  body {
+      background-color: #f7f9fc;
+    }
+    .hotel-search-box {
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 1000px;
+      margin: 40px auto 20px;
+    }
+    .hotel-search-box h3 {
+      margin-bottom: 20px;
+    }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+    }
+    .form-row > * {
+      flex: 1;
+    }
+    .form-row input, .form-row select {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 100%;
+    }
+    .checkbox {
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+    }
+    .checkbox label {
+      margin-left: 8px;
+    }
+    .search-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .search-btn:hover {
+      background-color: #218838;
+    }
+    .filters {
+      max-width: 1000px;
+      margin: 0 auto 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: none;
+    }
+    .filters h4 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .filter-group{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .filters label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .filters.sidebar {
+      width: 250px;
+      height: fit-content;
+    }
+    .filters.mobile {
+      display: none;
+    }
+    .results-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      display: flex;
+      gap: 20px;
+      padding: 0 20px;
+    }
+    .hotel-results {
+      flex: 1;
+    }
+    .hotel-card {
+      background-color: #fff;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .hotel-card img {
+      width: 220px;
+      height: 140px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .hotel-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hotel-info h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #333;
+    }
+    .hotel-info p {
+      margin: 0 0 6px;
+      color: #666;
+      font-size: 14px;
+    }
+    .hotel-price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #28a745;
+    }
+    .stars {
+      color: gold;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    @media (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+      }
+      .results-container {
+        flex-direction: column;
+      }
+      .filters.sidebar {
+        display: none;
+      }
+      .filters.mobile {
+        display: block;
+        margin-bottom: 20px;
+      }
+      .hotel-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .hotel-card img {
+        width: 100%;
+        height: auto;
+      }
+      .hotel-info {
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<header id="header">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="#">
+          <img src="images/logo.png" alt="iqvia Logo">
+        </a>
+      </div>
+  
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./flight.html">Flights</a></li>
+          <!-- <li><a href="#">Tours</a></li> -->
+          <li><a href="./hotel.html">Hotels</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+        </ul>
+        <!-- <button class="login-btn" id="loginBtn">Login</button> -->
+        <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+<!-- Hero Section -->
+<section class="hero">
+  <div class="swiper hero-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image: url('images/hotel-bg.jpg');"></div>
+    </div>
+  </div>
+
+  <div class="search-box">
+    <!-- Hotel Search Form -->
+<div class="hotel-search-box">
+  <h3>Where do you want to stay?</h3>
+  <form id="hotelSearchForm">
+    <div class="form-row">
+      <input type="text" placeholder="Destination" required />
+      <input type="date" required />
+      <input type="date" required />
+      
+    <button type="submit" class="search-btn">Search</button>
+    </div>
+    <!-- <div class="checkbox">
+      <input type="checkbox" id="freeCancel">
+      <label for="freeCancel">Free cancellation</label>
+    </div> -->
+  </form>
+</div>
+  </div>
+</section>
+<!-- Hotel Results -->
+<!-- Results and Sidebar Filters -->
+<div class="results-container" id="resultsContainer" style="display: none;">
+  <div class="filters sidebar" id="filters">
+    <h4>Filters</h4>
+    <div class="filter-group">
+      <strong>Cancellation</strong>
+      <label><input type="checkbox" class="filter-option" value="free-cancel"> Free Cancellation</label>
+    </div>
+    <div class="filter-group">
+      <strong>Price Range</strong>
+      <input type="range" id="priceRange" min="1000" max="10000" value="7000" />
+      <p id="priceLabel">Up to ₹7,000</p>
+    </div>
+    <div class="filter-group">
+      <strong>Rating</strong>
+      <label><input type="checkbox" class="filter-option" value="rating-5"> <span class="stars">★★★★★</span></label>
+      <label><input type="checkbox" class="filter-option" value="rating-4"> <span class="stars">★★★★☆</span></label>
+      <label><input type="checkbox" class="filter-option" value="rating-3"> <span class="stars">★★★☆☆</span></label>
+      <label><input type="checkbox" class="filter-option" value="rating-2"> <span class="stars">★★☆☆☆</span></label>
+      <label><input type="checkbox" class="filter-option" value="rating-1"> <span class="stars">★☆☆☆☆</span></label>
+    </div>
+    <div class="filter-group">
+      <strong>Amenities</strong>
+      <label><input type="checkbox" class="filter-option" value="amenity-wifi"> Free Wi-Fi</label>
+      <label><input type="checkbox" class="filter-option" value="amenity-pool"> Swimming Pool</label>
+      <label><input type="checkbox" class="filter-option" value="amenity-parking"> Free Parking</label>
+    </div>
+  </div>
+
+  <div class="hotel-results" id="hotelResults">
+    <div class="hotel-card" data-price="3200" data-cancel="true" data-rating="4.2" data-amenities="wifi,pool,parking">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0JxgI2qCHTsxA7QPfdfjYhu9rf6CT_-1mAA&s" alt="Hotel 1">
+      <div class="hotel-info">
+        <h4>Le Grand Hotel</h4>
+        <div class="stars">★★★★☆</div>
+        <p>Chennai, India · 2.5 km from center</p>
+        <p class="hotel-price">₹3,200 per night</p>
+      </div>
+    </div>
+    <div class="hotel-card" data-price="4050" data-cancel="false" data-rating="3.8" data-amenities="wifi">
+      <img src="https://plus.unsplash.com/premium_photo-1661964071015-d97428970584?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG90ZWx8ZW58MHx8MHx8fDA%3D" alt="Hotel 2">
+      <div class="hotel-info">
+        <h4>Sunrise Residency</h4>
+        <div class="stars">★★★☆☆</div>
+        <p>Chennai, India · 1.2 km from center</p>
+        <p class="hotel-price">₹4,050 per night</p>
+      </div>
+    </div>
+    <div class="hotel-card" data-price="3200" data-cancel="true" data-rating="4.2" data-amenities="wifi,pool,parking">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0JxgI2qCHTsxA7QPfdfjYhu9rf6CT_-1mAA&s" alt="Hotel 1">
+      <div class="hotel-info">
+        <h4>Le Grand Hotel</h4>
+        <div class="stars">★★★★☆</div>
+        <p>Chennai, India · 2.5 km from center</p>
+        <p class="hotel-price">₹3,200 per night</p>
+      </div>
+    </div>
+    <div class="hotel-card" data-price="4050" data-cancel="false" data-rating="3.8" data-amenities="wifi">
+      <img src="https://plus.unsplash.com/premium_photo-1661964071015-d97428970584?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG90ZWx8ZW58MHx8MHx8fDA%3D" alt="Hotel 2">
+      <div class="hotel-info">
+        <h4>Sunrise Residency</h4>
+        <div class="stars">★★★☆☆</div>
+        <p>Chennai, India · 1.2 km from center</p>
+        <p class="hotel-price">₹4,050 per night</p>
+      </div>
+    </div>
+    <div class="hotel-card" data-price="3200" data-cancel="true" data-rating="1.2" data-amenities="wifi,pool,parking">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0JxgI2qCHTsxA7QPfdfjYhu9rf6CT_-1mAA&s" alt="Hotel 1">
+      <div class="hotel-info">
+        <h4>Le Grand Hotel</h4>
+        <div class="stars">★☆☆☆☆</div>
+        <p>Chennai, India · 2.5 km from center</p>
+        <p class="hotel-price">₹3,200 per night</p>
+      </div>
+    </div>
+    <div class="hotel-card" data-price="4050" data-cancel="false" data-rating="2.8" data-amenities="wifi">
+      <img src="https://plus.unsplash.com/premium_photo-1661964071015-d97428970584?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG90ZWx8ZW58MHx8MHx8fDA%3D" alt="Hotel 2">
+      <div class="hotel-info">
+        <h4>Sunrise Residency</h4>
+        <div class="stars">★★☆☆☆</div>
+        <p>Chennai, India · 1.2 km from center</p>
+        <p class="hotel-price">₹4,050 per night</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Logo">
+        <p>Your trusted partner in global travel experiences.</p>
+      </div>
+  
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="./flight.html">Flights</a></li>
+          <li><a href="./hotel.html">Hotels</a></li>
+          <!-- <li><a href="#tours">Tours</a></li> -->
+          <li><a href="./about-us.html">About Us</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-help">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Booking Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Email: support@travelvialondon.com</p>
+        <p>Phone: +44 123 456 7890</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© 2025 TravelViaLondon. All rights reserved.</p>
+    </div>
+  </footer>
+<!-- Scroll to Top Button -->
+<button id="topBtn"><i class="fas fa-chevron-up"></i></button>
+<script>
+  document.getElementById("hotelSearchForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const results = document.getElementById("hotelResults");
+    results.style.display = "block";
+    results.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="assets/js/scripts.js"></script>
+
+    <script>
+  document.getElementById("hotelSearchForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    document.getElementById("filters").style.display = "block";
+    document.getElementById("resultsContainer").style.display = "flex";
+    document.getElementById("resultsContainer").scrollIntoView({ behavior: 'smooth' });
+  });
+
+  const priceRange = document.getElementById("priceRange");
+  const priceLabel = document.getElementById("priceLabel");
+
+  priceRange.addEventListener("input", function () {
+    priceLabel.textContent = `Up to ₹${priceRange.value}`;
+    applyFilters();
+  });
+
+  document.querySelectorAll(".filter-option").forEach(cb => {
+    cb.addEventListener("change", applyFilters);
+  });
+
+  function applyFilters() {
+    const cards = document.querySelectorAll(".hotel-card");
+    const freeCancel = document.querySelector(".filter-option[value='free-cancel']").checked;
+    const ratings = [...document.querySelectorAll(".filter-option[value^='rating-']")].filter(cb => cb.checked).map(cb => parseInt(cb.value.split('-')[1]));
+    const amenityWifi = document.querySelector(".filter-option[value='amenity-wifi']").checked;
+    const amenityPool = document.querySelector(".filter-option[value='amenity-pool']").checked;
+    const amenityParking = document.querySelector(".filter-option[value='amenity-parking']").checked;
+    const maxPrice = parseInt(priceRange.value);
+
+    cards.forEach(card => {
+      const price = parseInt(card.dataset.price);
+      const cancel = card.dataset.cancel === "true";
+      const rating = Math.floor(parseFloat(card.dataset.rating));
+      const amenities = card.dataset.amenities.split(',');
+
+      let show = true;
+
+      if (freeCancel && !cancel) show = false;
+      if (price > maxPrice) show = false;
+      if (ratings.length > 0 && !ratings.includes(rating)) show = false;
+      if (amenityWifi && !amenities.includes("wifi")) show = false;
+      if (amenityPool && !amenities.includes("pool")) show = false;
+      if (amenityParking && !amenities.includes("parking")) show = false;
+
+      card.style.display = show ? "flex" : "none";
+    });
+  }
+</script>
+</body>
+</html>

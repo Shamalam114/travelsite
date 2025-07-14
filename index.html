@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Travel and Tourism">
+  <meta name="author" content="Dude_Shamz">
+  <title>Travel Via London</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    .plane-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* allows clicks through the planes */
+  overflow: hidden;
+}
+
+.plane-left, .plane-right {
+  position: absolute;
+  font-size: 24px;
+  color: #007bff;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.plane-left {
+  top: 100%;
+  left: -10%;
+  transform: rotate(-45deg);
+  animation-name: fly-left;
+}
+
+.plane-right {
+  top: 100%;
+  right: -10%;
+  transform: rotate(45deg);
+  animation-name: fly-right;
+}
+
+@keyframes fly-left {
+  0% {
+    transform: translate(0, 0) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(120vw, -120vh) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fly-right {
+  0% {
+    transform: translate(0, 0) rotate(225deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-120vw, -120vh) rotate(225deg);
+    opacity: 0;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<header id="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="#">
+          <img src="images/logo.png" alt="iqvia Logo">
+        </a>
+      </div>
+  
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./flight.html">Flights</a></li>
+          <!-- <li><a href="#">Tours</a></li> -->
+          <li><a href="./hotel.html">Hotels</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+        </ul>
+        <button class="login-btn" id="loginBtn">Login</button>
+        <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+<!-- Login Modal -->
+<div class="login-modal" id="loginModal">
+    <div class="plane-animation">
+        <i class="fas fa-plane plane-left"></i>
+        <i class="fas fa-plane plane-right"></i>
+    </div>
+    <div class="login-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2>Welcome Back</h2>
+      <p>Login to explore your next adventure</p>
+      <form>
+        <input type="email" placeholder="Email Address" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <p class="login-footer">Don’t have an account? <a href="#">Sign up</a></p>
+      </form>
+    </div>
+</div>
+  
+<!-- Hero Section -->
+<section class="hero">
+  <div class="swiper hero-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image: url('images/1.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('images/2.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('images/3.jpg');"></div>
+    </div>
+  </div>
+
+  <div class="search-box">
+    <div class="flight-search">
+        <div class="trip-options">
+            <button class="active" id="oneWayBtn">One-way</button>
+            <button id="roundTripBtn">Round-trip</button>
+            <button id="multiCityBtn">Multi-city</button>
+        </div>
+
+        <form id="flightForm">
+            <div id="formFields"></div>
+
+            <div class="checkbox" id="directFlightOnly">
+                <input type="checkbox" id="directOnly">
+                <label for="directOnly" style="margin-top: 2px;">Direct flight only</label>
+            </div>
+
+            <div class="form-row">
+                <!-- Passenger -->
+                 
+                <div class="passenger-selector">
+                    <input type="text" id="passengerInput" readonly value="1 Adult">
+                    <div class="passenger-dropdown" id="passengerDropdown">
+                        <div class="passenger-row">
+                            <span>Adults <p>(12+ yrs)</p></span>
+                            <div class="counter">
+                                <button class="decrement" data-type="adult">-</button>
+                                <span id="adultCount">1</span>
+                                <button class="increment" data-type="adult">+</button>
+                            </div>
+                        </div>
+                        <div class="passenger-row">
+                            <span>Children <p>(2–12 yrs)</p></span>
+                            <div class="counter">
+                                <button class="decrement" data-type="child">-</button>
+                                <span id="childCount">0</span>
+                                <button class="increment" data-type="child">+</button>
+                            </div>
+                        </div>
+                        <div class="passenger-row">
+                            <span>Infants <p>(<2 yrs)</p></span>
+                            <div class="counter">
+                                <button class="decrement" data-type="infant">-</button>
+                                <span id="infantCount">0</span>
+                                <button class="increment" data-type="infant">+</button>
+                            </div>
+                        </div>
+                        <hr style="border: none; border-top: 1px solid #dfdfdf; margin: 10px 0;">
+                        <button class="apply-btn" id="applyPassengers">Apply</button>
+                    </div>
+                </div>
+
+                <select>
+                    <option>Economy</option>
+                    <option>Premium Economy</option>
+                    <option>Business</option>
+                </select>
+<!-- 
+                <select>
+                    <option>7 Payment Types</option>
+                    <option>UPI</option>
+                    <option>Credit Card</option>
+                    <option>Net Banking</option>
+                </select> -->
+
+                <button type="submit" class="search-btn">Search</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</section>
+
+<!-- Propositions Section -->
+<section class="propositions">
+    <div class="container propositions-grid">
+  
+      <div class="proposition-item">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Top Travel App in the UK</h3>
+        <p>Highly rated on App Store & Google Play</p>
+      </div>
+  
+      <div class="proposition-item">
+        <i class="fas fa-shopping-cart"></i>
+        <h3>Shop with Confidence</h3>
+        <p>No hidden fees, taxes, or surprises</p>
+      </div>
+  
+      <div class="proposition-item">
+        <i class="fas fa-credit-card"></i>
+        <h3>Pay Your Way</h3>
+        <p>See sellers supporting your preferred payment</p>
+      </div>
+  
+      <div class="proposition-item">
+        <i class="fas fa-bolt"></i>
+        <h3>Instant Booking</h3>
+        <p>Book instantly with selected sellers</p>
+      </div>
+  
+    </div>
+  </section>
+  
+<!-- Popular Destinations -->
+<section class="section">
+  <h2>Popular Destinations</h2>
+  <div class="swiper popular-swiper">
+    <div class="swiper-wrapper">
+      <!-- Card -->
+      <div class="swiper-slide card">
+        <img src="images/home-pic/PD-1.jpg" alt="Destination">
+        <h3>Paris</h3>
+        <p>The City of Light.</p>
+      </div>
+      <div class="swiper-slide card">
+        <img src="images/home-pic/PD-2.jpg" alt="Destination">
+        <h3>Rome</h3>
+        <p>Historic and beautiful.</p>
+      </div>
+      <!-- Add more cards -->
+      <div class="swiper-slide card">
+        <img src="images/home-pic/PD-1.jpg" alt="Destination">
+        <h3>Paris</h3>
+        <p>The City of Light.</p>
+      </div>
+      <div class="swiper-slide card">
+        <img src="images/home-pic/PD-2.jpg" alt="Destination">
+        <h3>Rome</h3>
+        <p>Historic and beautiful.</p>
+      </div>
+      <div class="swiper-slide card">
+        <img src="images/home-pic/PD-2.jpg" alt="Destination">
+        <h3>Rome</h3>
+        <p>Historic and beautiful.</p>
+      </div>
+    </div>
+    <!-- Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<!-- Travel Categories -->
+<section class="section categories">
+  <h2>Travel Categories</h2>
+  <div class="categories-grid">
+    <div class="category">
+      <i class="fas fa-hotel"></i>
+      <h4>Hotels</h4>
+    </div>
+    <div class="category">
+      <i class="fas fa-plane"></i>
+      <h4>Flights</h4>
+    </div>
+    <div class="category">
+      <i class="fas fa-car"></i>
+      <h4>Car Rentals</h4>
+    </div>
+    <div class="category">
+      <i class="fas fa-map-marked-alt"></i>
+      <h4>Guided Tours</h4>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Tours -->
+<section class="section">
+    <h2>Featured Tours</h2>
+  
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="europe">Europe</button>
+        <button class="filter-btn" data-filter="asia">Asia</button>
+        <button class="filter-btn" data-filter="america">America</button>
+        <button class="filter-btn" data-filter="africa">Africa</button>
+      </div>      
+  
+    <!-- Tours -->
+    <div class="featured-tours">
+      <div class="tour-card europe">
+        <img src="images/home-pic/FT-1.jpg" alt="Europe Tour">
+        <h3>Europe Highlights</h3>
+        <button>Book Now</button>
+      </div>
+      <div class="tour-card asia">
+        <img src="images/home-pic/FT-2.jpg" alt="Asia Tour">
+        <h3>Asian Wonders</h3>
+        <button>Book Now</button>
+      </div>
+      <div class="tour-card america">
+        <img src="images/home-pic/FT-1.jpg" alt="America Tour">
+        <h3>American Adventures</h3>
+        <button>Book Now</button>
+      </div>
+      <div class="tour-card africa">
+        <img src="images/home-pic/FT-2.jpg" alt="Africa Tour">
+        <h3>African Safari</h3>
+        <button>Book Now</button>
+      </div>
+      <div class="tour-card europe">
+        <img src="images/home-pic/FT-1.jpg" alt="Europe Tour">
+        <h3>Europe Highlights</h3>
+        <button>Book Now</button>
+      </div>
+      <div class="tour-card asia">
+        <img src="images/home-pic/FT-2.jpg" alt="Asia Tour">
+        <h3>Asian Wonders</h3>
+        <button>Book Now</button>
+      </div>
+      <div class="tour-card america">
+        <img src="images/home-pic/FT-1.jpg" alt="America Tour">
+        <h3>American Adventures</h3>
+        <button>Book Now</button>
+      </div>
+      <div class="tour-card africa">
+        <img src="images/home-pic/FT-2.jpg" alt="Africa Tour">
+        <h3>African Safari</h3>
+        <button>Book Now</button>
+      </div>
+    </div>
+  </section>
+  
+
+<!-- Testimonials -->
+<section class="section testimonials">
+  <h2>What Our Clients Say</h2>
+  <div class="swiper testimonial-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide testimonial-card">
+        <p>"Amazing experience! Highly recommended."</p>
+        <h4>- John Doe</h4>
+      </div>
+      <div class="swiper-slide testimonial-card">
+        <p>"Best travel company ever!"</p>
+        <h4>- Sarah Smith</h4>
+      </div>
+    </div>
+    <!-- Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Logo">
+        <p>Your trusted partner in global travel experiences.</p>
+      </div>
+  
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="./flight.html">Flights</a></li>
+          <li><a href="./hotel.html">Hotels</a></li>
+          <!-- <li><a href="#tours">Tours</a></li> -->
+          <li><a href="./about-us.html">About Us</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-help">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Booking Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Email: support@travelvialondon.com</p>
+        <p>Phone: +44 123 456 7890</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© 2025 TravelViaLondon. All rights reserved.</p>
+    </div>
+  </footer>
+  
+
+<!-- Scroll to Top Button -->
+<button id="topBtn"><i class="fas fa-chevron-up"></i></button>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="assets/js/scripts.js"></script>
+
+<!-- Script for login popup-->
+<script>
+    const loginBtn = document.getElementById("loginBtn");
+    const loginModal = document.getElementById("loginModal");
+    const closeModal = document.getElementById("closeModal");
+  
+    loginBtn.onclick = () => {
+      loginModal.style.display = "flex";
+    }
+  
+    closeModal.onclick = () => {
+      loginModal.style.display = "none";
+    }
+  
+    window.onclick = (e) => {
+      if (e.target === loginModal) {
+        loginModal.style.display = "none";
+      }
+    }
+  </script>
+  <!-- Script for from palce and to place exchange-->
+
+   <datalist id="airport-list">
+        <option value="Chennai (MAA)">
+        <option value="Mumbai (BOM)">
+        <option value="Delhi (DEL)">
+        <option value="Bangalore (BLR)">
+        <option value="Hyderabad (HYD)">
+        <option value="Kolkata (CCU)">
+        <option value="Dubai (DXB)">
+        <option value="Singapore (SIN)">
+        <option value="London Heathrow (LHR)">
+        <option value="New York JFK (JFK)">
+    </datalist>
+<script>
+        const formFields = document.getElementById("formFields");
+        const directFlightOnly = document.getElementById("directFlightOnly");
+
+        const oneWayBtn = document.getElementById("oneWayBtn");
+        const roundTripBtn = document.getElementById("roundTripBtn");
+        const multiCityBtn = document.getElementById("multiCityBtn");
+
+        oneWayBtn.addEventListener('click', () => showForm('one-way'));
+        roundTripBtn.addEventListener('click', () => showForm('round-trip'));
+        multiCityBtn.addEventListener('click', () => showForm('multi-city'));
+
+        function activateButton(activeBtn) {
+            [oneWayBtn, roundTripBtn, multiCityBtn].forEach(btn => btn.classList.remove("active"));
+            activeBtn.classList.add("active");
+        }
+
+        function createCityRow(i = 1, removable = false) {
+            return `
+      <div class="form-row multi-city-group">
+        <input type="text" placeholder="From" name="from${i}" list="airport-list" required>
+        <i class="fas fa-exchange-alt swap-icon" onclick="swapInputsRow(this)"></i>
+        <input type="text" placeholder="To" name="to${i}" list="airport-list" required>
+        <input type="date" name="depart${i}" required>
+        ${removable ? `<button type="button" class="remove-flight-btn" onclick="this.parentElement.remove()">🗑️</button>` : ''}
+      </div>
+    `;
+        }
+
+        function swapInputs() {
+            const from = document.querySelector("input[placeholder='From']");
+            const to = document.querySelector("input[placeholder='To']");
+            if (from && to) {
+                [from.value, to.value] = [to.value, from.value];
+            }
+        }
+
+        function swapInputsRow(icon) {
+            const parent = icon.closest('.form-row');
+            const from = parent.querySelector("input[placeholder='From']");
+            const to = parent.querySelector("input[placeholder='To']");
+            if (from && to) {
+                [from.value, to.value] = [to.value, from.value];
+            }
+        }
+
+        function showForm(type) {
+            const btnMap = {
+                'one-way': oneWayBtn,
+                'round-trip': roundTripBtn,
+                'multi-city': multiCityBtn
+            };
+
+            activateButton(btnMap[type]);
+            directFlightOnly.style.display = type !== 'multi-city' ? 'flex' : 'none';
+
+            if (type === 'one-way' || type === 'round-trip') {
+                const returnInput = type === 'round-trip' ? '<input type="date" placeholder="Return" required>' : '';
+
+                formFields.innerHTML = `
+        <div class="form-row">
+          <input type="text" placeholder="From" list="airport-list" required>
+          <i class="fas fa-exchange-alt swap-icon" onclick="swapInputs()"></i>
+          <input type="text" placeholder="To" list="airport-list" required>
+          <input type="date" placeholder="Depart" required>
+          ${returnInput}
+        </div>
+      `;
+            } else if (type === 'multi-city') {
+                formFields.innerHTML = `
+        <div id="multiCityContainer">
+          ${createCityRow(1)}
+        </div>
+        <button type="button" class="add-flight-btn" onclick="addFlight()">+ Add flight</button>
+      `;
+            }
+        }
+
+        function addFlight() {
+            const container = document.getElementById("multiCityContainer");
+            if (!container) return;
+            const count = container.children.length;
+            if (count >= 10) {
+                alert("You can add a maximum of 10 flights.");
+                return;
+            }
+            container.insertAdjacentHTML("beforeend", createCityRow(count + 1, true));
+        }
+
+        document.getElementById("flightForm").addEventListener("submit", function (e) {
+            const requiredFields = formFields.querySelectorAll("input[required]");
+            for (let input of requiredFields) {
+                if (!input.value.trim()) {
+                    alert("Please fill all required fields.");
+                    input.focus();
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        });
+
+        showForm('one-way'); // default
+    </script>
+    <script>// Passenger Dropdown
+        const passengerInput = document.getElementById("passengerInput");
+        const passengerDropdown = document.getElementById("passengerDropdown");
+        const applyPassengers = document.getElementById("applyPassengers");
+
+        passengerInput.addEventListener("click", () => {
+            passengerDropdown.classList.toggle("show");
+        });
+
+        applyPassengers.addEventListener("click", () => {
+            const adult = document.getElementById("adultCount").innerText;
+            const child = document.getElementById("childCount").innerText;
+            const infant = document.getElementById("infantCount").innerText;
+            passengerInput.value = `${adult} Adult${child > 0 ? ", " + child + " Child" : ""}${infant > 0 ? ", " + infant + " Infant" : ""}`;
+            passengerDropdown.classList.remove("show");
+        });
+
+        // Increment/Decrement Buttons
+        document.querySelectorAll(".increment").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const type = btn.dataset.type;
+                const countSpan = document.getElementById(`${type}Count`);
+                let count = parseInt(countSpan.innerText);
+                countSpan.innerText = ++count;
+            });
+        });
+
+        document.querySelectorAll(".decrement").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const type = btn.dataset.type;
+                const countSpan = document.getElementById(`${type}Count`);
+                let count = parseInt(countSpan.innerText);
+                if (count > 0 && !(type === 'adult' && count === 1)) {
+                    countSpan.innerText = --count;
+                }
+            });
+        });
+
+        // Prevent form required validation on button clicks
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".counter button, .apply-btn").forEach((btn) => {
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

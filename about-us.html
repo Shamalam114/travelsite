@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - TravelViaLondon</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #f2841d, #fcc57d);
+            line-height: 1.6;
+        }
+
+        .about-header {
+            margin-top: 80px;
+            text-align: center;
+            padding: 60px 20px 30px;
+            animation: slideFade 1s ease-out;
+        }
+
+        .about-header h1 {
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 0 20px 40px;
+            font-size: 1.2rem;
+            color: #fff;
+            max-width: 800px;
+            margin: auto;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #fff;
+            color: #333;
+            border-radius: 20px 20px 0 0;
+            padding: 60px 30px;
+            animation: slideUp 1.2s ease-in-out;
+        }
+
+        .about-content {
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .about-content h2 {
+            color: #061242;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .about-content p {
+            margin-bottom: 16px;
+        }
+
+        .about-image {
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .features {
+            background-color: #fff;
+            color: #333;
+            text-align: center;
+            padding: 50px 30px;
+        }
+
+        .features h3 {
+            font-size: 2rem;
+            color: #061242;
+            margin-bottom: 30px;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .feature {
+            background-color: #fdf1e6;
+            padding: 20px;
+            border-radius: 12px;
+            width: 250px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: #f2841d;
+            margin-bottom: 10px;
+        }
+
+        @keyframes slideFade {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+
+            .feature-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<!-- Navbar -->
+<header id="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="#">
+          <img src="images/logo.png" alt="iqvia Logo">
+        </a>
+      </div>
+  
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./flight.html">Flights</a></li>
+          <!-- <li><a href="#">Tours</a></li> -->
+          <li><a href="./hotel.html">Hotels</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+        </ul>
+        <!-- <button class="login-btn" id="loginBtn">Login</button> -->
+        <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+    <div class="about-header">
+        <h1>About TravelViaLondon</h1>
+    </div>
+
+    <section class="intro">
+        <p>TravelViaLondon is your one-stop travel partner, helping explorers discover the world with comfort,
+            convenience, and unforgettable experiences.</p>
+    </section>
+
+    <section class="about-section">
+        <div class="about-content">
+            <h2>Who We Are</h2>
+            <p>We are a team of travel enthusiasts and tech innovators passionate about creating seamless journeys. With
+                years of industry experience, our goal is to simplify your travel planning, offer top-rated
+                accommodations, and provide unbeatable flight deals—all in one place.</p>
+            <p>From spontaneous weekend getaways to meticulously planned tours, TravelViaLondon is designed to support
+                every kind of traveler. Whether you crave luxury or budget-friendly options, we have something for
+                everyone.</p>
+        </div>
+        <div class="about-image">
+            <img src="./images/logo.png" alt="Travel Moments">
+        </div>
+    </section>
+
+    <section class="features">
+        <h3>Why Choose Us?</h3>
+        <div class="feature-grid">
+            <div class="feature">
+                <i class="fas fa-plane-departure"></i>
+                <h4>Global Flights</h4>
+                <p>Access over 300 airlines and fly to destinations across the globe with best fares.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-hotel"></i>
+                <h4>Top-Rated Hotels</h4>
+                <p>Choose from a wide range of hotels—from boutique stays to premium resorts.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-headset"></i>
+                <h4>24/7 Support</h4>
+                <p>Our friendly support team is here round-the-clock to help you anytime, anywhere.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Safe & Secure</h4>
+                <p>Your data and bookings are always protected with advanced encryption and care.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Logo">
+        <p>Your trusted partner in global travel experiences.</p>
+      </div>
+  
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="./flight.html">Flights</a></li>
+          <li><a href="./hotel.html">Hotels</a></li>
+          <!-- <li><a href="#tours">Tours</a></li> -->
+          <li><a href="./about-us.html">About Us</a></li>
+          <li><a href="./contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-help">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Booking Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Email: support@travelvialondon.com</p>
+        <p>Phone: +44 123 456 7890</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© 2025 TravelViaLondon. All rights reserved.</p>
+    </div>
+  </footer>
+  
+
+<!-- Scroll to Top Button -->
+<button id="topBtn"><i class="fas fa-chevron-up"></i></button>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="assets/js/scripts.js"></script>
+
+</body>
+
+</html>
