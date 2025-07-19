@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- For Date field -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <style>
   body {
       background-color: #f7f9fc;
@@ -166,6 +170,8 @@
           <li><a href="./flight.html">Flights</a></li>
           <!-- <li><a href="#">Tours</a></li> -->
           <li><a href="./hotel.html">Hotels</a></li>
+          <li><a href="./umrah.html"><i class="fas fa-kaaba"></i> Umrah</a></li>
+          <li><a href="./about-us.html">About us</a></li>
           <li><a href="./contact-us.html">Contact</a></li>
         </ul>
         <!-- <button class="login-btn" id="loginBtn">Login</button> -->
@@ -442,110 +448,139 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script src="assets/js/scripts.js"></script>
 
-
 <script>
-        const formFields = document.getElementById("formFields");
-        const directFlightOnly = document.getElementById("directFlightOnly");
+  const formFields = document.getElementById("formFields");
+  const directFlightOnly = document.getElementById("directFlightOnly");
 
-        const oneWayBtn = document.getElementById("oneWayBtn");
-        const roundTripBtn = document.getElementById("roundTripBtn");
-        const multiCityBtn = document.getElementById("multiCityBtn");
+  const oneWayBtn = document.getElementById("oneWayBtn");
+  const roundTripBtn = document.getElementById("roundTripBtn");
+  const multiCityBtn = document.getElementById("multiCityBtn");
 
-        oneWayBtn.addEventListener('click', () => showForm('one-way'));
-        roundTripBtn.addEventListener('click', () => showForm('round-trip'));
-        multiCityBtn.addEventListener('click', () => showForm('multi-city'));
+  oneWayBtn.addEventListener('click', () => showForm('one-way'));
+  roundTripBtn.addEventListener('click', () => showForm('round-trip'));
+  multiCityBtn.addEventListener('click', () => showForm('multi-city'));
 
-        function activateButton(activeBtn) {
-            [oneWayBtn, roundTripBtn, multiCityBtn].forEach(btn => btn.classList.remove("active"));
-            activeBtn.classList.add("active");
-        }
+  function activateButton(activeBtn) {
+    [oneWayBtn, roundTripBtn, multiCityBtn].forEach(btn => btn.classList.remove("active"));
+    activeBtn.classList.add("active");
+  }
 
-        function createCityRow(i = 1, removable = false) {
-            return `
+  function createCityRow(i = 1, removable = false) {
+    return `
       <div class="form-row multi-city-group">
+        <label><strong>Flight Booking ${i}</strong></label>
         <input type="text" placeholder="From" name="from${i}" list="airport-list" required>
         <i class="fas fa-exchange-alt swap-icon" onclick="swapInputsRow(this)"></i>
         <input type="text" placeholder="To" name="to${i}" list="airport-list" required>
-        <input type="date" name="depart${i}" required>
+        <input type="text" class="datepicker" name="depart${i}" placeholder="Depart Date" required>
         ${removable ? `<button type="button" class="remove-flight-btn" onclick="this.parentElement.remove()">🗑️</button>` : ''}
       </div>
     `;
-        }
+  }
 
-        function swapInputs() {
-            const from = document.querySelector("input[placeholder='From']");
-            const to = document.querySelector("input[placeholder='To']");
-            if (from && to) {
-                [from.value, to.value] = [to.value, from.value];
-            }
-        }
+  function swapInputs() {
+    const from = document.querySelector("input[placeholder='From']");
+    const to = document.querySelector("input[placeholder='To']");
+    if (from && to) {
+      [from.value, to.value] = [to.value, from.value];
+    }
+  }
 
-        function swapInputsRow(icon) {
-            const parent = icon.closest('.form-row');
-            const from = parent.querySelector("input[placeholder='From']");
-            const to = parent.querySelector("input[placeholder='To']");
-            if (from && to) {
-                [from.value, to.value] = [to.value, from.value];
-            }
-        }
+  function swapInputsRow(icon) {
+    const parent = icon.closest('.form-row');
+    const from = parent.querySelector("input[placeholder='From']");
+    const to = parent.querySelector("input[placeholder='To']");
+    if (from && to) {
+      [from.value, to.value] = [to.value, from.value];
+    }
+  }
 
-        function showForm(type) {
-            const btnMap = {
-                'one-way': oneWayBtn,
-                'round-trip': roundTripBtn,
-                'multi-city': multiCityBtn
-            };
+  function showForm(type) {
+    const btnMap = {
+      'one-way': oneWayBtn,
+      'round-trip': roundTripBtn,
+      'multi-city': multiCityBtn
+    };
 
-            activateButton(btnMap[type]);
-            directFlightOnly.style.display = type !== 'multi-city' ? 'flex' : 'none';
+    activateButton(btnMap[type]);
+    directFlightOnly.style.display = type !== 'multi-city' ? 'flex' : 'none';
 
-            if (type === 'one-way' || type === 'round-trip') {
-                const returnInput = type === 'round-trip' ? '<input type="date" placeholder="Return" required>' : '';
+    if (type === 'one-way' || type === 'round-trip') {
+      const returnInput = type === 'round-trip'
+        ? `<input type="text" class="datepicker" placeholder="Return Date" required>`
+        : '';
 
-                formFields.innerHTML = `
+      formFields.innerHTML = `
         <div class="form-row">
           <input type="text" placeholder="From" list="airport-list" required>
           <i class="fas fa-exchange-alt swap-icon" onclick="swapInputs()"></i>
           <input type="text" placeholder="To" list="airport-list" required>
-          <input type="date" placeholder="Depart" required>
+          <input type="text" class="datepicker" placeholder="Depart Date" required>
           ${returnInput}
         </div>
       `;
-            } else if (type === 'multi-city') {
-                formFields.innerHTML = `
+    } else if (type === 'multi-city') {
+      formFields.innerHTML = `
         <div id="multiCityContainer">
           ${createCityRow(1)}
         </div>
         <button type="button" class="add-flight-btn" onclick="addFlight()">+ Add flight</button>
       `;
-            }
-        }
+    }
 
-        function addFlight() {
-            const container = document.getElementById("multiCityContainer");
-            if (!container) return;
-            const count = container.children.length;
-            if (count >= 10) {
-                alert("You can add a maximum of 10 flights.");
-                return;
-            }
-            container.insertAdjacentHTML("beforeend", createCityRow(count + 1, true));
-        }
+    // Reinitialize Flatpickr after DOM update
+    setTimeout(() => {
+      flatpickr(".datepicker", {
+        dateFormat: "Y-m-d",
+        minDate: "today",
+          onChange: function(selectedDates, dateStr, instance) {
+            // Set minimum check-out date
+            checkOutPicker.set("minDate", dateStr);
+          },
+        altInput: true,
+        altFormat: "F j, Y"
+      });
+    }, 0);
+  }
 
-        document.getElementById("flightForm").addEventListener("submit", function (e) {
-            const requiredFields = formFields.querySelectorAll("input[required]");
-            for (let input of requiredFields) {
-                if (!input.value.trim()) {
-                    alert("Please fill all required fields.");
-                    input.focus();
-                    e.preventDefault();
-                    return false;
-                }
-            }
-        });
+  function addFlight() {
+    const container = document.getElementById("multiCityContainer");
+    if (!container) return;
+    const count = container.querySelectorAll('.multi-city-group').length;
+    if (count >= 10) {
+      alert("You can add a maximum of 10 flights.");
+      return;
+    }
+    const newRow = createCityRow(count + 1, true);
+    container.insertAdjacentHTML("beforeend", newRow);
+    flatpickr(".multi-city-group:last-child .datepicker", {
+      dateFormat: "Y-m-d",
+      minDate: "today",
+        onChange: function(selectedDates, dateStr, instance) {
+          // Set minimum check-out date
+          checkOutPicker.set("minDate", dateStr);
+        },
+      altInput: true,
+      altFormat: "F j, Y"
+    });
+  }
 
-        showForm('one-way'); // default
-    </script>
+  document.getElementById("flightForm").addEventListener("submit", function (e) {
+    const requiredFields = formFields.querySelectorAll("input[required]");
+    for (let input of requiredFields) {
+      if (!input.value.trim()) {
+        alert("Please fill all required fields.");
+        input.focus();
+        e.preventDefault();
+        return false;
+      }
+    }
+  });
+
+  // Initialize default view
+  showForm('one-way');
+</script>
+
     <script>// Passenger Dropdown
         const passengerInput = document.getElementById("passengerInput");
         const passengerDropdown = document.getElementById("passengerDropdown");

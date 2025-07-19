@@ -1,3 +1,4 @@
+
 // Swiper for Hero, Popular, Testimonials
 var heroSwiper = new Swiper('.hero-swiper', {
     loop: true,
@@ -90,4 +91,3 @@ filterButtons.forEach(button => {
     }
   });
 });
-  

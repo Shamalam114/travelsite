@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Umrah Packages - TravelViaLondon</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .video-section {
+            width: 100%;
+            height: 90vh;
+            overflow: hidden;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .video-section video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .allah-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(4.5rem, 10vw, 8rem);
+            font-weight: bold;
+            font-family: 'Scheherazade New', 'Amiri', serif;
+            color: #ffd700;
+            text-align: center;
+            white-space: nowrap;
+            z-index: 2;
+
+            /* Effects */
+            text-shadow:
+                0 0 10px #ffd700,
+                0 0 20px #ffc107,
+                0 0 30px #ffeb3b,
+                0 0 40px #fff176;
+
+            animation: pulse-glow 3s infinite ease-in-out, floatText 5s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                text-shadow:
+                    0 0 10px #ffd700,
+                    0 0 20px #ffc107,
+                    0 0 30px #ffeb3b;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                text-shadow:
+                    0 0 20px #fff176,
+                    0 0 40px #ffeb3b,
+                    0 0 60px #fff59d;
+                transform: translate(-50%, -50%) scale(1.08);
+            }
+
+            100% {
+                text-shadow:
+                    0 0 10px #ffd700,
+                    0 0 20px #ffc107,
+                    0 0 30px #ffeb3b;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes floatText {
+            0% {
+                top: 50%;
+            }
+
+            50% {
+                top: 48%;
+            }
+
+            100% {
+                top: 50%;
+            }
+        }
+
+        .content-section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+            animation: fadeIn 1.2s ease;
+        }
+
+        .content-section h2 {
+            color: #061242;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .package-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .package-card h3 {
+            margin-top: 0;
+            color: #f2841d;
+        }
+
+        .package-card p {
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #061242, #f8a13b);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 80px;
+            text-align: center;
+            line-height: 24px;
+        }
+
+        .highlight h2 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .feature-box h4 {
+            font-size: 24px;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 250px;
+            transition: 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-box i {
+            font-size: 32px;
+            color: #f2841d;
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .enquiry-section {
+            background: linear-gradient(135deg, #061242, #0b3c68);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 16px;
+            margin: 60px auto;
+            max-width: 1200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease;
+        }
+
+        .enquiry-section h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .enquiry-section p {
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+
+        .enquiry-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .enquiry-section .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .quote-btn {
+            background-color: #f2841d;
+            color: white;
+            box-shadow: 0 0 10px #f2841d;
+        }
+
+        .quote-btn:hover {
+            background-color: #da7317;
+            box-shadow: 0 0 20px #ffb74d;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            box-shadow: 0 0 10px #25D366;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1eb75b;
+            box-shadow: 0 0 20px #34e17d;
+        }
+
+        @media (max-width: 768px) {
+            .feature-box {
+                max-width: unset;
+            }
+
+            .feature-box h4 {
+                font-size: 20px;
+            }
+
+            .enquiry-section {
+                margin: 40px 20px;
+            }
+            .content-section{
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Audio -->
+    <audio id="bgAudio" loop>
+        <source src="./audiovideo/labbaik_allahuma.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bgAudio');
+            // Try to play after user interaction
+            const playAudio = () => {
+                audio.play().catch(err => {
+                    console.log("Autoplay failed:", err);
+                });
+                document.removeEventListener('click', playAudio);
+            };
+
+            // Try immediately
+            audio.play().catch(() => {
+                // If blocked, wait for user interaction
+                document.addEventListener('click', playAudio);
+            });
+        });
+    </script>
+
+    <!-- Navbar -->
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="#">
+                    <img src="images/logo.png" alt="iqvia Logo">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./flight.html">Flights</a></li>
+                    <li><a href="./hotel.html">Hotels</a></li>
+                    <li><a href="./umrah.html"><i class="fas fa-kaaba"></i> Umrah</a></li>
+                    <li><a href="./about-us.html">About us</a></li>
+                    <li><a href="./contact-us.html">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="video-section">
+        <video autoplay muted loop playsinline>
+            <source src="./audiovideo/umrah-bg.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+        <!-- Arabic Text -->
+        <div class="allah-text">الله أكبر</div>
+    </section>
+
+    <section class="content-section">
+        <h2>Experience a Spiritual Journey Like No Other</h2>
+        <p>
+            TravelViaLondon offers tailor-made Umrah packages that combine comfort, spirituality, and convenience. We
+            ensure that your pilgrimage is peaceful, well-organized, and memorable. Whether you're traveling alone, with
+            family, or in a group - we have packages to suit every need.
+        </p>
+
+        <div class="package-grid">
+            <div class="package-card">
+                <h3>Economy Umrah Package</h3>
+                <p>
+                    - Return Flight Tickets<br />
+                    - 3-Star Hotel Accommodation<br />
+                    - Ground Transport & Ziyarah Tours<br />
+                    - Daily Meals (Optional)<br />
+                    - Assistance for Umrah Visa & Guide
+                </p>
+            </div>
+            <div class="package-card">
+                <h3>Premium Umrah Package</h3>
+                <p>
+                    - 4 or 5-Star Hotel Stay Near Haram<br />
+                    - High-End Transport Service<br />
+                    - Multilingual Tour Guide<br />
+                    - Full Meal Plans<br />
+                    - Personal Assistance Throughout
+                </p>
+            </div>
+            <div class="package-card">
+                <h3>Group & Family Umrah</h3>
+                <p>
+                    - Flexible Dates<br />
+                    - Special Group Discounts<br />
+                    - Child-Friendly Facilities<br />
+                    - Female Guide Assistance<br />
+                    - Dedicated 24/7 Support
+                </p>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <h2>Why Choose Us?</h2>
+            <p>
+                With over a decade of experience, trusted partnerships in Saudi Arabia, and a passion for service - we
+                bring unmatched convenience and spiritual comfort to your Umrah journey.
+            </p>
+        </div>
+
+        <div class="features">
+            <div class="feature-box">
+                <i class="fas fa-plane"></i>
+                <h4>Air Tickets</h4>
+                <p>We provide the most competitive flight prices with top airlines for your Umrah journey.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-hotel"></i>
+                <h4>Premium Hotels</h4>
+                <p>Comfortable stays close to Masjid Al-Haram & Masjid Al-Nabawi with full amenities.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-bus"></i>
+                <h4>Transport</h4>
+                <p>Private air-conditioned buses and on-ground assistance throughout the pilgrimage.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-user-shield"></i>
+                <h4>Visa & Support</h4>
+                <p>Hassle-free visa process, documentation help, and 24/7 WhatsApp assistance.</p>
+            </div>
+        </div>
+    </section>
+    <div class="enquiry-section">
+        <h2>Have Questions or Need a Custom Umrah Package?</h2>
+        <p>Reach out to us directly – our team is ready to assist you with personalized quotes and guidance.</p>
+        <div class="enquiry-buttons">
+            <a href="./contact-us.html" class="btn quote-btn"><i class="fas fa-envelope"></i> Get a Quote</a>
+            <a href="https://wa.me/441234567890" target="_blank" class="btn whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Logo">
+                <p>Your trusted partner in global travel experiences.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="./flight.html">Flights</a></li>
+                    <li><a href="./hotel.html">Hotels</a></li>
+                    <!-- <li><a href="#tours">Tours</a></li> -->
+                    <li><a href="./about-us.html">About Us</a></li>
+                    <li><a href="./contact-us.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-help">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Booking Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: support@travelvialondon.com</p>
+                <p>Phone: +44 123 456 7890</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 TravelViaLondon. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button -->
+    <button id="topBtn"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
+</body>
+
+</html>

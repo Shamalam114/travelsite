@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- For Date field -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <style>
   body {
       background-color: #f7f9fc;
@@ -184,6 +187,8 @@
           <li><a href="./flight.html">Flights</a></li>
           <!-- <li><a href="#">Tours</a></li> -->
           <li><a href="./hotel.html">Hotels</a></li>
+          <li><a href="./umrah.html"><i class="fas fa-kaaba"></i> Umrah</a></li>
+          <li><a href="./about-us.html">About us</a></li>
           <li><a href="./contact-us.html">Contact</a></li>
         </ul>
         <!-- <button class="login-btn" id="loginBtn">Login</button> -->
@@ -209,8 +214,8 @@
   <form id="hotelSearchForm">
     <div class="form-row">
       <input type="text" placeholder="Destination" required />
-      <input type="date" required />
-      <input type="date" required />
+      <input type="text" class="datepicker" id="checkIn" placeholder="Check In" required>
+      <input type="text" class="datepicker" id="checkOut" placeholder="Check Out" required>
       
     <button type="submit" class="search-btn">Search</button>
     </div>
@@ -418,5 +423,21 @@
     });
   }
 </script>
+<script>
+  flatpickr("#checkIn", {
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    onChange: function(selectedDates, dateStr, instance) {
+      // Set minimum check-out date
+      checkOutPicker.set("minDate", dateStr);
+    }
+  });
+
+  const checkOutPicker = flatpickr("#checkOut", {
+    dateFormat: "Y-m-d",
+    minDate: "today"
+  });
+</script>
+
 </body>
 </html>

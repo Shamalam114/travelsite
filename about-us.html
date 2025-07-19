@@ -43,7 +43,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background-color: #fff;
+            background: linear-gradient(to right, #f5e2d0, #fff);
             color: #333;
             border-radius: 20px 20px 0 0;
             padding: 60px 30px;
@@ -78,7 +78,7 @@
         }
 
         .features {
-            background-color: #fff;
+            background: linear-gradient(to right, #f5e2d0, #fff);
             color: #333;
             text-align: center;
             padding: 50px 30px;
@@ -98,7 +98,7 @@
         }
 
         .feature {
-            background-color: #fdf1e6;
+            background-color: #fadfc6;
             padding: 20px;
             border-radius: 12px;
             width: 250px;
@@ -165,40 +165,59 @@
             .about-section {
                 flex-direction: column;
                 padding: 40px 20px;
+                margin: auto 10px;
+            }
+
+            .about-header {
+                padding: 60px 0px 30px;
             }
 
             .feature-grid {
                 flex-direction: column;
+            }
+
+            .features {
+                padding: 50px 15px;
+            }
+
+            .feature {
+                width: 100%;
+            }
+
+            .about-image img {
+                height: auto;
             }
         }
     </style>
 </head>
 
 <body>
-<!-- Navbar -->
-<header id="header">
-    <div class="container nav-container">
-      <div class="logo">
-        <a href="#">
-          <img src="images/logo.png" alt="iqvia Logo">
-        </a>
-      </div>
-  
-      <nav>
-        <ul class="nav-links" id="nav-links">
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./flight.html">Flights</a></li>
-          <!-- <li><a href="#">Tours</a></li> -->
-          <li><a href="./hotel.html">Hotels</a></li>
-          <li><a href="./contact-us.html">Contact</a></li>
-        </ul>
-        <!-- <button class="login-btn" id="loginBtn">Login</button> -->
-        <div class="hamburger" id="hamburger">
-          <i class="fas fa-bars"></i>
+    <!-- Navbar -->
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="#">
+                    <img src="images/logo.png" alt="iqvia Logo">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./flight.html">Flights</a></li>
+                    <!-- <li><a href="#">Tours</a></li> -->
+                    <li><a href="./hotel.html">Hotels</a></li>
+                    <li><a href="./umrah.html"><i class="fas fa-kaaba"></i> Umrah</a></li>
+                    <li><a href="./about-us.html">About us</a></li>
+                    <li><a href="./contact-us.html">Contact</a></li>
+                </ul>
+                <!-- <button class="login-btn" id="loginBtn">Login</button> -->
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
-      </nav>
-    </div>
-  </header>
+    </header>
     <div class="about-header">
         <h1>About TravelViaLondon</h1>
     </div>
@@ -250,59 +269,59 @@
     </section>
 
     <!-- Footer -->
-<footer class="footer">
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="images/logo.png" alt="Logo">
-        <p>Your trusted partner in global travel experiences.</p>
-      </div>
-  
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="./flight.html">Flights</a></li>
-          <li><a href="./hotel.html">Hotels</a></li>
-          <!-- <li><a href="#tours">Tours</a></li> -->
-          <li><a href="./about-us.html">About Us</a></li>
-          <li><a href="./contact-us.html">Contact</a></li>
-        </ul>
-      </div>
-  
-      <div class="footer-help">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Booking Policy</a></li>
-          <li><a href="#">Terms & Conditions</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-  
-      <div class="footer-contact">
-        <h4>Contact Us</h4>
-        <p>Email: support@travelvialondon.com</p>
-        <p>Phone: +44 123 456 7890</p>
-        <div class="socials">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-x-twitter"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Logo">
+                <p>Your trusted partner in global travel experiences.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="./flight.html">Flights</a></li>
+                    <li><a href="./hotel.html">Hotels</a></li>
+                    <!-- <li><a href="#tours">Tours</a></li> -->
+                    <li><a href="./about-us.html">About Us</a></li>
+                    <li><a href="./contact-us.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-help">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Booking Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: support@travelvialondon.com</p>
+                <p>Phone: +44 123 456 7890</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  
-    <div class="footer-bottom">
-      <p>© 2025 TravelViaLondon. All rights reserved.</p>
-    </div>
-  </footer>
-  
 
-<!-- Scroll to Top Button -->
-<button id="topBtn"><i class="fas fa-chevron-up"></i></button>
+        <div class="footer-bottom">
+            <p>© 2025 TravelViaLondon. All rights reserved.</p>
+        </div>
+    </footer>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script src="assets/js/scripts.js"></script>
+
+    <!-- Scroll to Top Button -->
+    <button id="topBtn"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
 
 </body>
 
